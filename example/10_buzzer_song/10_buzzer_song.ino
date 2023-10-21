@@ -1,10 +1,48 @@
+#include "notes.h"        // 引入函式庫
+
+int buzzerPin = 9;        // 定義蜂鳴器引腳
+int size;
+
+// 簡譜對照表
+// 1: C4, 2: D4, 3: E4, 4: F4, 5: G4, 6: A4
+// 5. : G3
+
+// 用陣列儲存兩隻老虎的旋律
+int melody[] = {NOTE_C4, NOTE_D4, NOTE_E4, NOTE_C4,
+                NOTE_C4, NOTE_D4, NOTE_E4, NOTE_C4,
+                NOTE_E4, NOTE_F4, NOTE_G4,
+                NOTE_E4, NOTE_F4, NOTE_G4,
+                NOTE_G4, NOTE_A4, NOTE_G4, NOTE_F4, NOTE_E4, NOTE_C4,
+                NOTE_G4, NOTE_A4, NOTE_G4, NOTE_F4, NOTE_E4, NOTE_C4,
+                NOTE_D4, NOTE_G3, NOTE_C4,
+                NOTE_D4, NOTE_G3, NOTE_C4
+                };
+
+// 用陣列儲存兩隻老虎的節奏
+int noteDurations[] = { 500, 500, 500, 500,
+                        500, 500, 500, 500,
+                        500, 500, 1000,
+                        500, 500, 1000,
+                        250, 250, 250, 250, 500, 500,
+                        250, 250, 250, 250, 500, 500,
+                        500, 500, 1000,
+                        500, 500, 1000
+                      };
+
 void setup() {
-  pinMode(2,OUTPUT);  // 設定腳位 2 為輸出
+  pinMode(buzzerPin, OUTPUT);                 // 設置蜂鳴器腳位為輸出
+  Serial.begin(9600);
+  size = sizeof(melody) / sizeof(melody[0]);  // 計算儲存整首歌陣列的大小
 }
 
 void loop() {
-  digitalWrite(2,HIGH); // 輸出高電位，會叫
-  delay(1000);
-  digitalWrite(2,LOW);  // 輸出低電位，不會叫
-  delay(1000);
+  // 播放音樂
+  for (int i = 0; i < size; i++) {
+    int duration = noteDurations[i];
+    tone(buzzerPin, melody[i], duration);
+    int pauseBetweenNotes = duration * 1.30;
+    delay(pauseBetweenNotes);
+    noTone(buzzerPin);
+  }
+  delay(1000);  // 停頓一秒
 }
