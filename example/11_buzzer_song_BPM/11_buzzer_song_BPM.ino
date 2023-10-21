@@ -7,14 +7,6 @@ int quarter = (60/BPM)*1000;      // 四分音符
 int half = quarter * 2;           // 半分音符
 int eigth = quarter / 2;          // 八分音符
 
-void set_beats(float BPM, int beats[]) {
-  float BPS;
-  BPS = BPM / 60.0;               // 換成 Beats Per second
-  beats[1] = round(BPS * 1000);
-  beats[0] = round(beats[1]*2);
-  beats[2] = round(beats[1]/2);
-}
-
 // 簡譜對照表
 // 1: C4, 2: D4, 3: E4, 4: F4, 5: G4, 6: A4
 // 5. : G3
