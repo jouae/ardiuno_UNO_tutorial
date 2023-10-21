@@ -1,21 +1,19 @@
-byte R = 9;   // 定義 R 腳位為 9
-byte G = 10;  // 定義 G 腳位為 10
-byte B = 11;  // 定義 B 腳位為 11
+byte LEDs[3] = {2,3,4};   // 使用陣列定義 LED 腳位為2 ~ 4
+byte LED = 0;             // 設定想要控制的 LED 腳位編號
+byte t = 0;               // 設定要持續多少秒
 
 void setup() {
-  pinMode(R,OUTPUT);  // 設定 R, G, B 三個腳位皆作為輸出
-  pinMode(G,OUTPUT);
-  pinMode(B,OUTPUT);
+  for(byte i=1; i<3; i++) {       // 設定腳位 2 ~ 4 為輸出
+    pinMode(LEDs[i],OUTPUT);      // 同時設定低電位 
+    digitalWrite(LEDs[i],LOW);
+  }
 }
 
 void loop() {
-  analogWrite(R,95);  // 數字從 0 ~ 255, 8 bits
-  analogWrite(G,27);
-  analogWrite(B,88);
-  delay(1000);
-  analogWrite(R,0);
-  analogWrite(G,0);
-  analogWrite(B,0);
-  delay(1000);
+  LED = random(2,5);      // 隨機決定欲控制 LED 腳位編號
+  t = random(1,4);        // 隨機決定秒數
+  digitalWrite(LED,HIGH); // 讓該 LED 亮起
+  delay(t * 1000);        // 持續亮 t 秒
+  digitalWrite(LED,LOW);  // 熄掉 LED
+  delay(t * 1000);        // 持續熄 t 秒
 }
-
