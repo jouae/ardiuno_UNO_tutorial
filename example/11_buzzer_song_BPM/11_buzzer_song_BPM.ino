@@ -20,26 +20,26 @@ void set_beats(float BPM, int beats[]) {
 // 5. : G3
 
 // 用陣列儲存兩隻老虎的旋律
-int melody[] = {NOTE_C4, NOTE_D4, NOTE_E4, NOTE_C4,
-                NOTE_C4, NOTE_D4, NOTE_E4, NOTE_C4,
-                NOTE_E4, NOTE_F4, NOTE_G4,
-                NOTE_E4, NOTE_F4, NOTE_G4,
-                NOTE_G4, NOTE_A4, NOTE_G4, NOTE_F4, NOTE_E4, NOTE_C4,
-                NOTE_G4, NOTE_A4, NOTE_G4, NOTE_F4, NOTE_E4, NOTE_C4,
-                NOTE_D4, NOTE_G3, NOTE_C4,
-                NOTE_D4, NOTE_G3, NOTE_C4
+int melody[] = {NOTE_C4, NOTE_C4, NOTE_G4, NOTE_G4,
+                NOTE_A4, NOTE_A4, NOTE_G4, 
+                NOTE_F4, NOTE_F4, NOTE_E4,NOTE_E4,
+                NOTE_D4, NOTE_D4, NOTE_C4,
+                NOTE_G4, NOTE_F4, NOTE_F4, NOTE_F4,
+                NOTE_E4, NOTE_E4, NOTE_D4, 
+                NOTE_G4, NOTE_G4, NOTE_F4,NOTE_F4,
+                NOTE_E4, NOTE_E4, NOTE_D4
                 };
 
 // 用陣列儲存兩隻老虎的節奏
 int noteDurations[] = { quarter, quarter, quarter, quarter,
-                        quarter, quarter, quarter, quarter,
-                        quarter, quarter, half,
-                        quarter, quarter, half,
-                        eigth, eigth, eigth, eigth, quarter, quarter,
-                        eigth, eigth, eigth, eigth, quarter, quarter,
-                        quarter, quarter, half,
-                        quarter, quarter, half
-                      };
+                        quarter, quarter, quarter,
+                        quarter, quarter,quarter ,quarter,
+                        quarter, quarter,quarter,
+                        quarter, quarter, quarter, quarter,                        
+                        quarter,quarter,quarter,
+                        eigth, quarter, quarter,quarter,
+                        quarter, quarter, quarter,
+                };
 
 void setup() {
   pinMode(buzzerPin, OUTPUT);                 // 設置蜂鳴器腳位為輸出
